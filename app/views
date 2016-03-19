@@ -1,0 +1,10 @@
+from app import app
+from flask import render_template, redirect
+from config import Secrets
+import tweepy
+
+
+@app.route("/")
+def index():
+    return "Hello Twitter User!"
+
