@@ -5,6 +5,13 @@ import tweepy
 
 
 @app.route("/")
-idef index():
-    return "Hello Twitter User!"
+def index():
+    return render_template("index.html")
 
+
+@app.route("/connect/")
+def connect():
+	auth = tweepy.OAuthHandler(config.API_Key,
+							   config.API_Secret)
+	auth_url = auth.get_authorization_url()
+	return redirect(auth_url)
