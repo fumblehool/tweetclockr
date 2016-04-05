@@ -15,3 +15,8 @@ def connect():
 							   config.API_Secret)
 	auth_url = auth.get_authorization_url()
 	return redirect(auth_url)
+
+
+@app.route("/callback/")
+def callback():
+	return "Hello there you are at callback page."
