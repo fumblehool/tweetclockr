@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> welcome {{user}}</title>
+</head>
+<body>
+	<center><h1>Welcome {{user}}</h1></center>
+	<br/><br/>
+	<center>You have {{ number }} tweets posted.</center>
+	{% for i in posts %}
+		<center><h2>{{i}}</h2></center>
+	{% endfor%}
+</body>
+</html>

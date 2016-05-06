@@ -47,4 +47,9 @@ def callback():
 @app.route("/start")
 def start():
     api = db['api']
-    return "Welcome " + str(api.me().name)
+    z = api.user_timeline()
+    import IPython; IPython.embed()
+    p = []
+    for i in z:
+        p.append(i.text)
+    return render_template("start.html", user = str(api.me().name), number=api.me().statuses_count,posts=p)
