@@ -1,8 +1,10 @@
 from app import app
-from flask import render_template, redirect, session, request
+from flask import render_template, redirect, session, request, url_for
 import config
 import tweepy
 
+
+db = dict()
 
 @app.route("/")
 def index():
@@ -35,4 +37,14 @@ def callback():
         print 'Error! Failed to get access token.'
 
     api = tweepy.API(auth)
+    session.pop("request_token")
+    db['api'] = api
+    # db['access_token_key'] = auth.access_token.key
+    # db['access_token_secret'] = auth.access_token.secret
+    return redirect(url_for("start"))
+
+
+@app.route("/start")
+def start():
+    api = db['api']
     return "Welcome " + str(api.me().name)
